@@ -72,7 +72,7 @@ jobs:
       #task를 수정하는 작업
       - name: Fill in the new image ID and in the AWS_ECS TASK Definition
         id: task-def
-        uses: aws-actions/amazon-ecs-render-taskdefinition@c804dfbdd57f713b6c079302a4c01db7017a36fc
+        uses: aws-actions/amazon-ecs-render@c804dfbdd57f713b6c079302a4c01db7017a36fc
         with:
           task-definition: ${{ env.ECS_TASK_DEFINITION }}
           container-name: ${{ env.CONTAINER_NAME }}
@@ -80,7 +80,7 @@ jobs:
 
       #배포
       - name: Deploy Amazon ECS task definition
-        uses: aws-actions/amazon-ecs-deploy-taskdefinition@df9643053eda01f169e64a0e60233aacca83799a
+        uses: aws-actions/amazon-ecs-deploy@df9643053eda01f169e64a0e60233aacca83799a
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: ${{ env.ECS_SERVICE }}
