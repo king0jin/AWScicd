@@ -12,7 +12,7 @@ public class FrontController {
     @RequestMapping("/")
     public Map<String, Object> index() {
         Map<String, Object> model = new HashMap<>();
-        model.put("result", "Success");
+        model.put("name", "jini");
         return model;
     }
 }
