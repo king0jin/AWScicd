@@ -16,10 +16,10 @@ env:
   ECS_SERVICE: awscicd
   #ECS 클러스터
   ECS_CLUSTER: awscicd
-  #CONTAINER 이름
-  CONTAINER_NAME: awscicd
   #TASK정의 위치
   ECS_TASK_DEFINITION: ./awscicd-revision2.json
+  #CONTAINER 이름
+  CONTAINER_NAME: awscicd
 
 jobs:
   build-docker-image:
@@ -69,7 +69,6 @@ jobs:
             docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
             docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
             echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
-
       #task를 수정하는 작업
       - name: Fill in the new image ID and in the AWS_ECS TASK Definition
         id: task-def
@@ -78,3 +77,4 @@ jobs:
           task-definition: ${{ env.ECS_TASK_DEFINITION }}
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
+
