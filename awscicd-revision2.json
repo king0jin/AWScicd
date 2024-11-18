@@ -3,7 +3,6 @@
     "containerDefinitions": [
         {
             "name": "awscicd",
-
             "cpu": 0,
             "portMappings": [
                 {
